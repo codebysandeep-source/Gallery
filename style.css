@@ -1,0 +1,132 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gallery-image {
+    width: calc(33.33% - 10px);
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.02);
+}
+
+/* Lightbox styles */
+.lightbox::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: -1;  
+    filter: blur(2px);  
+}
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; 
+    background-position: center;
+    background-color: #ffffff;
+    z-index: 9999;
+    transition: all 0.2s ease;
+}
+
+.lightbox-content{
+    z-index: 1; 
+    position: absolute;
+    border: 10px solid #fff;
+    box-shadow: -2px 2px 40px #00000035;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    height: 85%;
+    background-size: cover;
+    max-width: 90%;
+    max-height: 90%;
+    background-size: cover; 
+    background-position: center;
+}
+
+
+.lightbox-close {
+    position: absolute;
+    top: 5%;
+    left: 87%;
+    transform: translateX(-87%) translateY(-5%);
+    padding: 10px;
+    height: 20px;
+    line-height: 20px;
+    color: #fff;           
+    font-size: 34px;
+    cursor: pointer;
+    z-index: 999999;
+}
+
+.lightbox-close:hover{
+    color: #000;
+    background-color: #fff;
+}
+
+
+
+/* Next & Previous buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    padding: 16px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1000;
+    user-select: none;
+}
+
+.prev {
+    left: 186px;
+}
+
+.next {
+    right: 186px;
+}
+
+.prev:hover, .next:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+
+
+    
+@media screen and (max-width:1200px){
+
+    .prev {
+        left: 0;
+        padding: 5px;
+    }
+    
+    .next {
+        right: 0;
+        padding: 5px;
+    }
+    .lightbox-close{
+        display: none;
+    }
+}
+
+@media screen and (max-width:500px){
+    .lightbox-content{
+        width: 80vw;
+        height: 50vh;
+    }
+}
